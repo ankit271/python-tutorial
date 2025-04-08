@@ -19,6 +19,12 @@ class Employee:
     def apply_increment(self):
        self.salary = (self.salary * self.salary_increment)
        return self.salary
+   
+    def __repr__(self):
+        return "Employee('{}', '{}', {})".format(self.first_name, self.last_name, self.salary)
+    
+    def __str__(self):
+        return '{} - {}'.format(self.full_name(), self.email)
 
 
 class Developer(Employee):
@@ -53,10 +59,12 @@ class Manager(Employee):
           for emp in self.employees:
               print('Employee Name: {}'.format(emp.full_name()))
        
-prog_1 = Developer('John', 'Doe', 50000, 'Python')
-prog_2 = Developer('Johnny', 'Doe', 60000, 'C++')
+# prog_1 = Developer('John', 'Doe', 50000, 'Python')
+# prog_2 = Developer('Johnny', 'Doe', 60000, 'C++')
 
-mgr1 = Manager(prog_1)
+# mgr1 = Manager(prog_1)
+emp1 = Employee('John', 'Doe', 50000)
+print(emp1)
 # mgr1.add_employee(prog_1)
 # mgr1.add_employee(prog_2)
 # mgr1.display()
