@@ -28,10 +28,20 @@ class Employee:
         name, age = string.split(",")
         return cls(name, int(age))
 
+    def __add__(self, other):
+        return self.name + ' ' + other.name
+        
+    def __eq__(self, other):
+        return self.name == other.name and self.age == other.age
+    
 emp = Employee("John Doe", 30)
 
-emp1 = Employee.from_string("Ankit,28")
-print(emp1)
+emp1 = Employee("John Doe", 30)
+
+#emp1 = Employee.from_string("Ankit,28")
+#print(emp1)
+print(emp1 == emp)
+
 
 #print(Employee.isEmployee(emp))
 
