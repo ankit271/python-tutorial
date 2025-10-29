@@ -1,0 +1,116 @@
+1. GET Request with JSON Response
+
+import requests
+
+response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+
+# Access JSON content
+data = response.json()
+
+print("Status Code:", response.status_code)
+print("Title:", data['title'])
+
+
+2. POST Request with JSON Body
+
+import requests
+import json
+
+url = "https://jsonplaceholder.typicode.com/posts"
+
+payload = {
+    "title": "foo",
+    "body": "bar",
+    "userId": 1
+}
+
+headers = {'Content-Type': 'application/json'}
+
+response = requests.post(url, data=json.dumps(payload), headers=headers)
+
+print("Response Code:", response.status_code)
+print("Response JSON:", response.json())
+
+4. Sending JSON with json= Parameter (preferred way)
+
+response = requests.post(
+    "https://jsonplaceholder.typicode.com/posts",
+    json={
+        "title": "foo",
+        "body": "bar",
+        "userId": 1
+    }
+)
+
+print("Status Code:", response.status_code)
+print("Returned ID:", response.json().get("id"))
+
+
+5. PUT Request (Update Resource)
+
+response = requests.put(
+    "https://jsonplaceholder.typicode.com/posts/1",
+    json={
+        "id": 1,
+        "title": "updated title",
+        "body": "updated body",
+        "userId": 1
+    }
+)
+
+print("Updated:", response.json())
+
+6. DELETE Request
+
+response = requests.delete("https://jsonplaceholder.typicode.com/posts/1")
+
+print("Status Code:", response.status_code)
+print("Response Body:", response.text)  # Usually empty for DELETE
+
+
+7. Parsing JSON from a Raw String
+import json
+
+raw_json = '{"name": "Alice", "age": 30, "skills": ["Python", "ML"]}'
+
+parsed = json.loads(raw_json)
+
+print("Name:", parsed["name"])
+print("Skills:", ", ".join(parsed["skills"]))
+
+
+8. Dumping Python Dict to JSON String
+
+import json
+
+data = {"name": "Bob", "active": True}
+
+json_str = json.dumps(data, indent=4)
+
+print("JSON String:")
+print(json_str)
+
+
+
+9. Handling Response Errors Gracefully
+
+response = requests.get("https://jsonplaceholder.typicode.com/posts/invalid")
+
+if response.status_code == 200:
+    data = response.json()
+    print(data)
+else:
+    print("Failed to fetch data. Status Code:", response.status_code)
+
+
+10. Set Custom Headers (e.g., Auth Token)
+
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Accept": "application/json"
+}
+
+response = requests.get("https://api.example.com/data", headers=headers)
+
+print(response.status_code)
+print(response.json())

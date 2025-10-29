@@ -1,14 +1,26 @@
 
-user = {
-    "name" : "Ankit",
-    "age" : 28
-}
+users = { 
+            "firstName": "Ankit",
+            "lastName" : "Mishra" ,
+            "address" : {
+                "street": "123 Main St",
+                "city": "New York",
+                "state": "NY"
+            }
+        }
+            
+        
 
-# user["name"] = "Roli Gupta"
+#users["firstNam"] = "Sumit"
+#users.update({"firstNam": "Sumit"})
 
-# user["isGirl"] = True
-# del user["age"]
+#print(users.get("firstName"))
 
-user.update({"name" : "Roli Gupta"})
-for key in user:
-    print(key, user[key])
+#users.pop("firstName");
+#print(users["firstName"])
+
+for key, value in  users.items():
+    print(key + " : " + str(value))
+
+#print(users)
+print(users["address"]["city"])

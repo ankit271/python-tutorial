@@ -1,11 +1,10 @@
 
-def square_generator(numbers):
-    for i in numbers:
-        yield (i*i)
+numbers = [1,24,5,6,7,89,9,10,11,12,13,14,15]
+
+def generate_numbers():
+    for number in numbers:
+        yield number
 
 
-sq_num = square_generator([1, 2, 3, 4, 5])
-
-
-
-
+for num in generate_numbers():
+    print(num)

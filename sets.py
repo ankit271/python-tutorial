@@ -1,13 +1,15 @@
 
-numbers = {1,23,4,5,5,5,1}
+num1 = {1,2,3,4,5}
 
-numbers.add(100)
-numbers.add(10)
+num2 = {6,7,8,9,10, 5}
 
-nums = {20,30,1}
+print(num1 | num2)
+print(num1.union(num2))
 
-#print(numbers.difference(nums))
+print(num1.intersection(num2))
 
-numbers.discard(101)
-#numbers.remove(101)
-print(numbers)
+print(num1.difference(num2))
+
+num1.update(num2)
+
+print(num1)
